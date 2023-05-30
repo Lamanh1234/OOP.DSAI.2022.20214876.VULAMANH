@@ -1,0 +1,8 @@
+Question in Lab03:
+
+Q1: After the call of swap(jungleDVD, cinderellaDVD) why does the title of these two objects still remain?
+ANS:
+Because when you pass 2 object JungleDVD and cinderellaDVD, you pass 2 reference varibale containing 2 address of JungleDVD and cinderellaDVD. Then 2 varibale o1 and o2 is the copy of those reference variable . Therefore, when you swap o1 and o2, you just swap 2 value of o1 and o2, but don't actually affect to the 2 object JungleDVD and CinderellaDVD.
+
+Q2: After the call of changeTitle(jungleDVD, cinderellaDVD.getTitle()) why is the title of the JungleDVD changed? 
+It changed because local variable dvd is the copy of reference varibale of JungleDVD, then dvd contains the address of JungleDVD -> dvd points to object JungleDVD. Inside the method, we use dvd.SetTitle(), then we can directly change the title of JungleDVD to title of cinderellaDVD.
