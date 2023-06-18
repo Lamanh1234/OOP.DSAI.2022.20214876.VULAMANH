@@ -29,7 +29,7 @@ public class Store {
 	
 	public Media searchMedia(String title) {
 		for (Media m : itemsInStore) {
-			if (m.getTitle() == title) {
+			if (m.getTitle().equals(title)) {
 				return m;
 			}
 		}
