@@ -68,5 +68,7 @@ public abstract class Media {
 				+ this.getCategory() + " - "+": " + this.getCost() + " $";
 		 return Media_string;
 	}
+	
+	
 }
 
