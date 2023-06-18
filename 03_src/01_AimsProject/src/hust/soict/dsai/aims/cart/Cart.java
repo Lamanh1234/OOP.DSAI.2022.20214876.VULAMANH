@@ -1,8 +1,6 @@
 package hust.soict.dsai.aims.cart;
-import hust.soict.dsai.aims.media.DigitalVideoDisc;
 import java.util.ArrayList;
 import  hust.soict.dsai.aims.media.Media;
-import hust.soict.dsai.aims.media.Track;
 
 public class Cart {
 	
@@ -37,23 +35,24 @@ public class Cart {
 		return cost;
 	}
 	// Print the list of ordered items of a cart:
-	public void print() {
+	public String toString() {
 		String result = "********************CART*********************\n\n";
 		float total_cost = 0;
 		result += "Ordered Items:\n";
 		for (int i = 0; i < itemsOrdered.size(); i++) {
+			System.out.println(itemsOrdered);
 			Media m = itemsOrdered.get(i);
-			result += (i+1) + m.toString() +"\n";
+			System.out.println(m);
+			result += "Media " + (i+1)+ ": " + m.toString() +"\n";
 			total_cost += m.getCost();
 		}
 		result += "Total cost: " + total_cost +"\n";
 		result += "************************************************\n";
-		System.out.print(result);
+		return result;
 	}
 	
 	// Search by ID:
 	public Media searchID(int id) {
-		int check = 0;
 		for (int i = 0; i < itemsOrdered.size(); i++) {
 			if (itemsOrdered.get(i).getId() == id) {
 				return itemsOrdered.get(i);
@@ -64,7 +63,7 @@ public class Cart {
 	//Search by Title:
 	public Media searchTitle(String title) {
 		for (Media m: itemsOrdered) {
-			if (m.getTitle() == title) {
+			if (m.getTitle().equals(title)) {
 				return m;
 			}
 		}
