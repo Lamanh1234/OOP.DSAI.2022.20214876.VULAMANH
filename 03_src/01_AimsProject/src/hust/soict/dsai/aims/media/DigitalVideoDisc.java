@@ -10,6 +10,11 @@ public class DigitalVideoDisc extends Disc implements Playable {
 		update_id();
 	}
 	
+	public DigitalVideoDisc(String title, float cost) {
+		this.setTitle(title);
+		this.setCost(cost);
+	}
+	
 	// Constructor by director, category, title and cost
 	
 	DigitalVideoDisc(String director, String category, String title, float cost){
