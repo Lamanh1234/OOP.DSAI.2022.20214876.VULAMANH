@@ -10,6 +10,10 @@ public class CompactDisc extends Disc implements Playable{
 		// TODO Auto-generated constructor stub
 		super();
 	}
+	public CompactDisc(String title, float cost) {
+		this.setTitle(title);
+		this.setCost(cost);
+	}
 
 	public CompactDisc(String title,String director, int length, String category, String artist, float cost) {
 		// TODO Auto-generated constructor stub
@@ -67,6 +71,7 @@ public class CompactDisc extends Disc implements Playable{
 	public ArrayList<Track> getTracks() {
 		return tracks;
 	}
+	
 
 
 

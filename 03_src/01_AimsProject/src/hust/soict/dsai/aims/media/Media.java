@@ -69,6 +69,8 @@ public abstract class Media {
 		 return Media_string;
 	}
 	
+	public String playScreen() {return null;};
+	
 	
 }
 
