@@ -1,5 +1,7 @@
 package hust.soict.dsai.aims.media;
+
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 public class Book extends Media {
 	private ArrayList<String> authors = new ArrayList<String>();
@@ -11,23 +13,23 @@ public class Book extends Media {
 	public Book(String title, String category, int id, float cost) {
 		super(title,category,id,cost);
 	}
-	public void addAuthor(String authorName) {
-		if (authors.contains(authorName)) {
-			System.out.println("Author is already in list of authors");
-		} else {
-			authors.add(authorName);
-			System.out.println("Add authors successfully");
-		}
-	}
-	
-	public void removeAuthor(String authorName) {
-		boolean change = authors.remove(authorName);
-		if (change) {
-			System.out.println("Remove author successfully");
-		} else {
-			System.out.println("Author is not found in list of authors");
-		}
-	}
+	public void addAuthor(String author) throws IllegalArgumentException {
+        if (!authors.contains(author)) {
+            authors.add(author);
+            System.out.println("Added author: " + author);
+        } else {
+            throw new IllegalArgumentException(author + " is already in the list of authors.");
+        }
+    }
+
+    public void removeAuthor(String author) throws NoSuchElementException {
+        if (authors.contains(author)) {
+            authors.remove(author);
+            System.out.println("Removed author: " + author);
+        } else {
+            throw new NoSuchElementException(author + " is not in the list of authors.");
+        }
+    }    
 	public ArrayList<String> getAuthors(){
 		return this.authors;
 	}

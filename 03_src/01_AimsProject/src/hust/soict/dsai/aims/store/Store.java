@@ -1,7 +1,7 @@
 package hust.soict.dsai.aims.store;
 import java.util.ArrayList;
 import hust.soict.dsai.aims.media.Media;
-
+import java.util.NoSuchElementException;
 public class Store {
 	public static final int MAX_NUMBERS_DVD = 100;
 	ArrayList<Media> itemsInStore = new ArrayList<Media>();
@@ -10,14 +10,13 @@ public class Store {
 		itemsInStore.add(media);
 	}
 	
-	public void removeMedia(Media media) {
-		boolean change = itemsInStore.remove(media);
-		if (change) {
-			System.out.println("Remove successfully");
-		} else {
-			System.out.println("This item is not found in store");
-		}
-	}
+	public void removeMedia(Media media) throws NoSuchElementException {
+        if (itemsInStore.remove(media)) {
+            System.out.println("Removed " + media.getTitle() + " from the store.");
+        } else {
+            throw new NoSuchElementException(media.getTitle() + " is not in the store.");
+        }
+    }
 	
 	public void listItems() {
 		System.out.println("List of item: ");

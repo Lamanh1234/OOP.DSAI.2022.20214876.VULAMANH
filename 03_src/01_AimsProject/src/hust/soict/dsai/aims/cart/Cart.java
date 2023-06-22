@@ -1,28 +1,35 @@
 package hust.soict.dsai.aims.cart;
-import java.util.ArrayList;
+
+import java.util.NoSuchElementException;
+
+import javax.naming.LimitExceededException;
+
+import hust.soict.dsai.aims.media.Media;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import  hust.soict.dsai.aims.media.Media;
 
 public class Cart {
 	
-	public static final int MAX_NUMBERS_ORDERS = 20;
-	private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
-	
-	public void addMedia(Media media) {
-		if (itemsOrdered.contains(media)) {
-			System.out.println("Already in list");
-		} else {
-			itemsOrdered.add(media);
-		}
-	}
-	
-	public void removeMedia(Media media) {
-		boolean change = itemsOrdered.remove(media);
-		if (change) {
-			System.out.println("Remove successfully");
-		} else {
-			System.out.println("Not found in list of tracks");
-		}
-	}
+	public static final int MAX_NUMBER_ORDERED = 20;
+    private ObservableList<Media> itemsOrdered = FXCollections.observableArrayList();
+    
+    public void addMedia(Media media) throws LimitExceededException {
+        if (itemsOrdered.size() < MAX_NUMBER_ORDERED) {
+            itemsOrdered.add(media);
+            System.out.println("Added " + media.getTitle() + " to the cart.");
+        } else {
+            throw new LimitExceededException("The cart is full!");
+        }
+    }
+    
+    public void removeMedia(Media media) throws NoSuchElementException {
+        if (itemsOrdered.remove(media)) {
+            System.out.println("Removed " + media.getTitle() + " from the cart.");
+        } else {
+            throw new NoSuchElementException(media.getTitle() + " is not in the cart.");
+        }
+    }
 	
 	
 	//cost
@@ -73,15 +80,8 @@ public class Cart {
 		return itemsOrdered.size();
 	}
 
-	public ArrayList<Media> getItemsOrdered() {
+	public  ObservableList<Media> getItemsOrdered() {
 		return itemsOrdered;
 	}
-
-	public void setItemsOrdered(ArrayList<Media> itemsOrdered) {
-		this.itemsOrdered = itemsOrdered;
-	}
-	
-	
-	
 	
 }
