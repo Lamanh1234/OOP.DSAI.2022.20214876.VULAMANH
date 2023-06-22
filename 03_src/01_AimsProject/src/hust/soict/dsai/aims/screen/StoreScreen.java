@@ -120,8 +120,8 @@ public class StoreScreen extends JFrame{
 		CompactDisc cd1 = new CompactDisc("Allstarts", "Yes", 15, "Sport", "Smash Mouth", 69.420f);
 		Track track1 = new Track("NBA1", 12);
 		Track track2 = new Track("NBA2", 15);
-		cd1.addTrack(track1);
-		cd1.addTrack(track2);
+		cd1.addtrack(track1);
+		cd1.addtrack(track2);
 		CompactDisc cd2 = new CompactDisc("New World", 25.28f);
 		
 		// Book:
