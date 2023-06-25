@@ -1,5 +1,6 @@
 package hust.soict.dsai.aims.screen;
 
+import hust.soict.dsai.aims.media.CompactDisc;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -9,6 +10,7 @@ import javax.swing.JFrame;
 import hust.soict.dsai.aims.cart.Cart;
 import hust.soict.dsai.aims.media.Book;
 import hust.soict.dsai.aims.media.DigitalVideoDisc;
+import hust.soict.dsai.aims.media.Track;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.fxml.FXMLLoader;
@@ -48,8 +50,8 @@ public class CartScreen extends JFrame {
     public static void main(String[] args) throws LimitExceededException {
         Cart cart = new Cart();
 
-        DigitalVideoDisc dvd1 = new DigitalVideoDisc("Movie 1", "Category 1", 9.99f);
-        DigitalVideoDisc dvd2 = new DigitalVideoDisc("Movie 2", "Category 2", 7.99f);
+        DigitalVideoDisc dvd1 = new DigitalVideoDisc("Movie 1", "Category 1",15, 9.99f);
+        DigitalVideoDisc dvd2 = new DigitalVideoDisc("Movie 2", "Category 2",12, 7.99f);
 
         cart.addMedia(dvd1);
         cart.addMedia(dvd2);
@@ -62,6 +64,13 @@ public class CartScreen extends JFrame {
         bookAuthors.add("Author 2");
         Book book = new Book(bookTitle, bookCost);
         
+        CompactDisc cd1 = new CompactDisc("Allstarts", "Yes", 15, "Sport", "Smash Mouth", 69.420f);
+		Track track1 = new Track("NBA1", 12);
+		Track track2 = new Track("NBA2", 15);
+		cd1.addtrack(track1);
+		cd1.addtrack(track2);
+		cart.addMedia(cd1);
+		
         cart.addMedia(book);
 
         new CartScreen(cart);

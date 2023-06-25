@@ -1,6 +1,7 @@
 package hust.soict.dsai.aims.media;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 public class Book extends Media {
@@ -12,6 +13,11 @@ public class Book extends Media {
 	}
 	public Book(String title, String category, int id, float cost) {
 		super(title,category,id,cost);
+	}
+	public Book(int id, String title, String category, float cost, List<String> authors2) {
+		// TODO Auto-generated constructor stub
+		super(title,category,id,cost);
+		this.setAuthors(authors);
 	}
 	public void addAuthor(String author) throws IllegalArgumentException {
         if (!authors.contains(author)) {
@@ -38,5 +44,9 @@ public class Book extends Media {
 		String book_string = "Book" + " - " + this.getTitle() + " - " + this.getCategory() +" - "
 				+ this.getCategory() + " - " + this.getAuthors() + ": " + this.getCost() + " $" ;
 		return book_string;
+	}
+	
+	public void setAuthors(ArrayList<String> authors) {
+		this.authors = authors;
 	}
 }

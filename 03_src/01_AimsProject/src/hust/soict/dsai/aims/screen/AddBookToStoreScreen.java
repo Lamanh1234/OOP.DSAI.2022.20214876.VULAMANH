@@ -88,4 +88,8 @@ public class AddBookToStoreScreen extends AddItemToStoreScreen {
     public void showScreen() {
         setVisible(true);
     }
+    public static void main(String args[]) {
+    	
+    	new addBookToStoreScreen(store);
+    }
 }

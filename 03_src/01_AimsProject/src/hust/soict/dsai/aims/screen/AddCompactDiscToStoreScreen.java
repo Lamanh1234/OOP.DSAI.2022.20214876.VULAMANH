@@ -81,7 +81,7 @@ public class AddCompactDiscToStoreScreen extends AddItemToStoreScreen {
                     tracks.add(new Track(trackTitle, trackLength));
                 }
 
-                CompactDisc cd = new CompactDisc(id, title, category, cost, length, director, artist, tracks);
+                CompactDisc cd = new CompactDisc(id, title, category, cost, length, director, artist,tracks);
                 store.addMedia(cd);
 
                 dispose();
