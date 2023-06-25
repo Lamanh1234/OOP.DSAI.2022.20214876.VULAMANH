@@ -3,6 +3,7 @@ package hust.soict.dsai.aims.screen;
 import java.util.function.Predicate;
 
 import hust.soict.dsai.aims.cart.Cart;
+import hust.soict.dsai.aims.exception.PlayerException;
 import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.media.Playable;
 import javafx.beans.binding.Bindings;
@@ -19,6 +20,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 public class CartScreenController {
     private Cart cart;
@@ -75,7 +78,8 @@ public class CartScreenController {
         btnPlay.setVisible(false);
         btnRemove.setVisible(false);
 
-        tblMedia.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Media>() {
+        tblMedia.getSelectionModel().selectedItemProperty().addListener(
+        	new ChangeListener<Media>() {
             @Override
             public void changed(ObservableValue<? extends Media> observable, Media oldValue, Media newValue) {
                 if (newValue!=null) {
@@ -129,4 +133,18 @@ public class CartScreenController {
         Media media = tblMedia.getSelectionModel().getSelectedItem();
         cart.removeMedia(media);
     }
+    
+    @FXML
+    void btnPlayPressed(ActionEvent event) {
+		Media media = tblMedia.getSelectionModel().getSelectedItem();
+		try {
+			((Playable)media).play();
+		} catch (PlayerException e) {
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Media Player");
+			alert.setHeaderText("ERROR: Media length is non-positive.");
+			alert.setContentText("Media cannot be played.");
+			alert.showAndWait();
+		}
+	}
 }

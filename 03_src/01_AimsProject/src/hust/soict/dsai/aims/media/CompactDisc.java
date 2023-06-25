@@ -2,6 +2,7 @@ package hust.soict.dsai.aims.media;
 import java.awt.AWTException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import hust.soict.dsai.aims.exception.PlayerException;
@@ -10,11 +11,7 @@ import hust.soict.dsai.aims.exception.PlayerException;
 public class CompactDisc extends Disc implements Playable{
 	private String Artist;
 	private ArrayList<Track> tracks = new ArrayList<Track>();
-	
-	public CompactDisc() {
-		// TODO Auto-generated constructor stub
-		super();
-	}
+
 	public CompactDisc(String title, float cost) {
 		this.setTitle(title);
 		this.setCost(cost);
@@ -27,6 +24,15 @@ public class CompactDisc extends Disc implements Playable{
 		
 	}
 
+	public CompactDisc(int id, String title, String category, float cost, int length, String director, String artist2,
+			List<Track> tracks2) {
+		super(title,category,cost,length,director);
+		this.setId(id);
+		this.setArtist(artist2);
+		this.setTracks(tracks);
+		
+		// TODO Auto-generated constructor stub
+	}
 	public String getArtist() {
 		return Artist;
 	}
@@ -87,6 +93,13 @@ public class CompactDisc extends Disc implements Playable{
 		return tracks;
 	}
 	
+	public void setArtist(String artist) {
+		this.Artist = artist;
+	}
+	
+	public void setTracks(ArrayList<Track> tracks) {
+		this.tracks = tracks;
+	}
 
 
 

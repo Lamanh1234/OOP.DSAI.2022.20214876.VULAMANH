@@ -18,4 +18,4 @@ public abstract class AddItemToStoreScreen extends JFrame {
     protected abstract void addComponents();
 
     public abstract void showScreen();
-}
+} 		
